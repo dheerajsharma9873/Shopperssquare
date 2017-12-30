@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Shoppers_Square.Models.SProduct>
+@{
+    ViewBag.Title = "ProductList";
+}
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PPrice) (in &#8377;)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PDetails)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductImage)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PDetails)
+            </td>
+            <td>
+                <img src="/ProductImages/@item.ProductImage" width="100" height="100" />
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditList", new { id = item.Pid}) |
+                @Html.ActionLink("Details", "DetailsList", new { id = item.Pid }) |
+                @Html.ActionLink("Delete", "DeleteList", new { id = item.Pid })
+            </td>
+        </tr>
+    }
+
+</table>
